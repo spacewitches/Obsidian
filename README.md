@@ -1,10 +1,14 @@
 # Manga Script for Obsidian QuickAdd Plugin
+
 ## Download
 [Download Script](QuickAdd/manga.js)
 ## Description
 This is a script based off of the [movies script](https://github.com/chhoumann/quickadd/blob/master/docs/docs/Examples/Attachments/movies.js) @chhoumann made for the [QuickAdd](https://github.com/chhoumann/quickadd) plugin for Obsidian. It **does not** require an API key, thanks to @jikan-me/[the Jikan MyAnimeList API](https://docs.api.jikan.moe/) which is publicly accessible. 
 ## Disclaimer
 This is provided as-is specifically for use with [Obsidian](https://obsidian.md/) and the [QuickAdd Plugin](https://github.com/chhoumann/quickadd). Feel free to modify it for other purposes, but coding is not my day job and I probably won't be able to walk you through it.
+
+This script WILL NOT work for anime or anything outside the manga category on MyAnimeList. It also will not retrieve user information/profiles/lists.
+
 ## Testing and Debugging
 I've only tested this on my machine, which is running macOS Sonoma 14.2, version 1.5.3 of Obsidian, and 1.6.1 of QuickAdd. Please let me know if you encounter any issues. 
 ## Installation
@@ -39,11 +43,45 @@ I've only tested this on my machine, which is running macOS Sonoma 14.2, version
 </details>
 
 ## Templates
-[Download Sample Template](QuickAdd/MAL Manga.md)
+
+[Download Sample Template](QuickAdd/MAL%20Manga.md)
 
 The sample template includes variables that I've either customized to display correctly with the script, or work fine without modification. 
 
 Additional fields would be any variable that is listed on the [sidebar under the 'getMangaSearch' heading on the Jikan API documentation](https://docs.api.jikan.moe/#tag/manga/operation/getMangaSearch). Anything that has subarrays (denoted by the plus signs) is probably not going to display correctly, if at all. While I intend to keep working on this script, I'm not planning on formatting every last field of information available. That being said, I'm open to requests. I just don't want to spend much time on formatting fields that no one's going to use.
+
+## Variables
+
+Variables that have been tested:
+
+| Variable | Contains | Type |
+|---------|---------|---|
+| title | Default display title on MAL | String |
+| title_english | English title | String |
+| authorsReversed | All authors/creators, formatted as Firstname Lastname and separated by commas | String |
+| authorsOriginal | All authors/creators, formatted as Lastname, Firstname and separated by commas | String |
+| genreList | List of genres | String |
+| themeList | List of themes | String |
+| type | Type of publication. Manga, manhwa, doujinshi, light novels, etc. | String |
+| cover | URL for cover image | String |
+| synopsis | Full length description from MAL | String |
+| chapters | Number of chapters (this is not always available) | Integer |
+| volumes | Number of volumes (this is not always available) | Integer |
+
+Variables that probably work in some capacity but I haven't tested yet:
+
+| Variable | Contains | Type |
+|------|---|---|
+| status | Whether or not the title is finished or ongoing | String |
+| publishing | Whether or not the title is currently being published | Boolean |
+| score | Average user score on MAL | Integer |
+| rank | Rank on MAL | Integer |
+| popularity | Popularity list position on MAL | Integer |
+| members | Number of membbers that have given the title a score | Integer |
+| favorites | Number of members that have favorited the title | Integer |
+| background | Background information on the title, its publication, awards etc. | String |
+
+Anything that's an integer in the untested list is a bit iffy - if the value is zero or unlisted then it returns a <code>NULL</code>, and what'll happen is that you'll be prompted for that value when the note is being made. You can provide that value or just click enter, but if you click cancel then the note will not be created.
 
 <details>
   <summary> Screenshot</summary>
@@ -57,4 +95,10 @@ Additional fields would be any variable that is listed on the [sidebar under the
 ## Additional Documentation/Resources:
 - [QuickAdd Repository](https://github.com/chhoumann/quickadd)
 - [Jikan API Documentation](https://docs.api.jikan.moe/)
-- [Minimal Theme Documentation](https://minimal.guide/guides/movie-database) 
+- [Minimal Theme Documentation](https://minimal.guide/guides/movie-database)
+
+## Planned Improvements
+- formatting the list of genres so that it can be used as tags
+- formatting the list of themes so it can be used as tags
+- variable for non-English titles
+- testing other variables like satus & publishing dates
