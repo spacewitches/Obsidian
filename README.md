@@ -38,6 +38,22 @@ I've only tested this on my machine, which is running macOS Sonoma 14.2, version
 14. You can run the script from the console if you've already set up a template. Otherwise it's not going to do much yet.
 </details>
 
+## Templates
+[Download Sample Template](QuickAdd/MAL Manga.md)
+
+The sample template includes variables that I've either customized to display correctly with the script, or work fine without modification. 
+
+Additional fields would be any variable that is listed on the [sidebar under the 'getMangaSearch' heading on the Jikan API documentation](https://docs.api.jikan.moe/#tag/manga/operation/getMangaSearch). Anything that has subarrays (denoted by the plus signs) is probably not going to display correctly, if at all. While I intend to keep working on this script, I'm not planning on formatting every last field of information available. That being said, I'm open to requests. I just don't want to spend much time on formatting fields that no one's going to use.
+
+<details>
+  <summary> Screenshot</summary>
+  
+![image](https://github.com/spacewitches/Obsidian/assets/127813090/978638de-f9fd-49e7-b01c-42f93db63644)
+
+</details>
+
+
+
 ## Additional Documentation/Resources:
 - [QuickAdd Repository](https://github.com/chhoumann/quickadd)
 - [Jikan API Documentation](https://docs.api.jikan.moe/)
