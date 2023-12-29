@@ -1,0 +1,63 @@
+/* Custom callouts for Minimal Theme */
+/* wider border, larger text, translucent background color, rounded corners */
+.callouts-outlined .callout {
+	--callout-border-width: 2px;
+	--callout-title-size: 1.25em;
+/*	background-color: rgba(var(--callout-color), .05); */
+	border-radius: 10px;
+}
+
+/* translucent title background color, bottom border line, rounded corners, title position adjustment, left and right margin adjustment, width adjustment */
+.callouts-outlined .callout .callout-title {
+	background-color: rgba(var(--callout-color), .1);
+	margin-top: -14px; 
+	margin-left: -26px; 
+      	margin-right: -5px;
+	width: inherit;
+  	border-bottom: 1px solid rgb(var(--callout-color));
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+/* padding adjustment to fix gap on title bar */
+.callout {
+	padding-right: 5px;
+}
+
+/* moved collapse button to far right edge */
+.callout:not([data-callout-metadata*=revert]) > .callout-title > .callout-title-inner {
+	flex-grow: var(--anp-callout-fold-position, 1);
+}
+
+/* shifts collapse button to the right just a bit more */
+.callout-fold {
+	padding: 0px;
+}
+
+/* nested callouts were shifted to the right, this centers them */
+.callout-content {
+	padding-right: 15px;
+	margin-left: -5px;
+}
+
+/* made icons a little bigger, making them significantly larger will mean having to readjust other title bar elements */
+.callout-icon svg.svg-icon {
+	height: 20px;
+	width: 20px;
+	margin-right: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
