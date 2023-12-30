@@ -1,0 +1,168 @@
+/* lane title font size */
+body {
+	.kanban-plugin__lane-title p, .kanban-plugin__lane-title-count {
+		font-size: 1.5em;
+	}
+	/* bigger lane grip icons */
+	.kanban-plugin__lane-grip > svg{
+		min-width:25px;
+		min-height:25px;
+		/* shifts left so that it's aligned on the outside edge of the lane */
+		margin-left: -5px;
+	}
+}
+
+/* removes border for each lane container */
+body .kanban-plugin__lane-items {
+border: 0px;
+}
+
+/* separates cards */
+.kanban-plugin__lane-items>div {
+margin-bottom: 10px;
+}
+
+
+/* shifts lane header over to the left */
+.kanban-plugin__lane-header-wrapper {
+	padding-left: 0px;
+	position: relative;
+	
+}
+/* swaps count and title text */
+.kanban-plugin__lane-header-wrapper {
+	.kanban-plugin__lane-grip {
+		order: -1;
+	}
+	.kanban-plugin__lane-title-count {
+		order: -1;
+		padding-right: .5em;
+	}
+}
+
+/* changes link color, removes underline on hover */
+body .kanban-plugin__item-title a { 
+	font-weight: bold;
+	color: var(--text-normal);
+}
+body .kanban-plugin__item-title a:hover { 
+	text-decoration: none;
+}
+
+/* button styling */
+/* changes background color to match editor */
+body .kanban-plugin__item-button-wrapper>button {
+	background-color: var(--background-primary);
+}
+/* rounds top corners of button, sets width to same as other lane elements, center aligns */
+body .kanban-plugin__lane:not(.will-prepend) .kanban-plugin__item-button-wrapper {
+	border-radius: 5px;
+	padding: 0px;
+	width: 262px;
+	align-self:center;
+}
+.kanban-plugin__lane button {
+	padding: 0px;
+}
+
+/* gets rid of partial border around card input line */
+body .kanban-plugin__lane-wrapper .kanban-plugin__item-form {
+	border: none;
+}
+
+/* lane 1 */
+body .kanban-plugin__lane-wrapper:nth-child(4n+1) {
+	/* header text, lane grip, count, icon color */
+	.kanban-plugin__lane-title-text p, .kanban-plugin__lane-grip, .kanban-plugin__lane-title-count, .kanban-plugin__icon {
+		color: var(--color-yellow);
+	}
+	/* background color of container box for whole lane */
+	.kanban-plugin__lane-items, .kanban-plugin__item-form {
+			background-color: var(--background-primary);
+	}
+	/* background color for each card */
+	.kanban-plugin__item-title-wrapper {
+		background-color: rgba(var(--color-yellow-rgb), .02);
+	}	
+	/* borders for each card */
+	.kanban-plugin__item, .kanban-plugin__item-button-wrapper {
+		border: 2px solid rgba(var(--color-yellow-rgb), .5);
+	}
+	/* tag hover color */
+	.kanban-plugin__item-tags a.tag:hover {
+		background-color: rgba(var(--color-yellow-rgb), .5);
+	}
+	/* form input */
+	.kanban-plugin__item-form .kanban-plugin__item-input-wrapper {
+		border: 2px solid rgba(var(--color-yellow-rgb), .5);	
+	}
+}
+/* lane 2 */
+body .kanban-plugin__lane-wrapper:nth-child(4n+2) {
+	.kanban-plugin__lane-title-text p, .kanban-plugin__lane-grip, .kanban-plugin__lane-title-count, .kanban-plugin__icon {
+		color: var(--color-cyan);
+	}
+	.kanban-plugin__lane-items, .kanban-plugin__item-form {
+			background-color: var(--background-primary);
+	}
+	.kanban-plugin__item-title-wrapper {
+		background-color: rgba(var(--color-cyan-rgb), .02);
+	}
+	.kanban-plugin__item, .kanban-plugin__item-button-wrapper {
+		border: 2px solid rgba(var(--color-cyan-rgb), .5);
+	}
+	.kanban-plugin__item-tags a.tag:hover {
+		background-color: rgba(var(--color-cyan-rgb), .5);
+	}
+	/* form input */
+	.kanban-plugin__item-form .kanban-plugin__item-input-wrapper {
+		border: 2px solid rgba(var(--color-cyan-rgb), .5);	
+	}	
+}
+/* lane 3 */
+body .kanban-plugin__lane-wrapper:nth-child(4n+3) {
+	.kanban-plugin__lane-title-text p, .kanban-plugin__lane-grip, .kanban-plugin__lane-title-count, .kanban-plugin__icon {
+		color: var(--color-red);
+	}
+	.kanban-plugin__lane-items, .kanban-plugin__item-form {
+			background-color: var(--background-primary);	
+	}
+	.kanban-plugin__item-title-wrapper {
+		background-color: rgba(var(--color-red-rgb), .02);	
+	}
+	.kanban-plugin__item, .kanban-plugin__item-button-wrapper {
+		border: 2px solid rgba(var(--color-red-rgb), .5);
+	}
+	.kanban-plugin__item-tags a.tag:hover {
+		background-color: rgba(var(--color-red-rgb), .5);
+	}
+	/* form input */
+	.kanban-plugin__item-form .kanban-plugin__item-input-wrapper {
+		border: 2px solid rgba(var(--color-red-rgb), .5);	
+	}	
+}
+/* lane 4 */
+body .kanban-plugin__lane-wrapper:nth-child(4n+4) {
+	.kanban-plugin__lane-title-text p, .kanban-plugin__lane-grip, .kanban-plugin__lane-title-count, .kanban-plugin__icon {
+		color: var(--color-green);
+	}
+	.kanban-plugin__lane-items, .kanban-plugin__item-form {
+			background-color: var(--background-primary);
+	}
+	.kanban-plugin__item-title-wrapper {
+		background-color: rgba(var(--color-green-rgb), .02);
+	}
+	.kanban-plugin__item, .kanban-plugin__item-button-wrapper {
+		border: 2px solid rgba(var(--color-green-rgb), .5);
+	}
+	.kanban-plugin__item-tags a.tag:hover {
+		background-color: rgba(var(--color-green-rgb), .5);
+	}
+	/* form input */
+	.kanban-plugin__item-form .kanban-plugin__item-input-wrapper {
+		border: 2px solid rgba(var(--color-green-rgb), .5);	
+	}	
+}
+
+
+
