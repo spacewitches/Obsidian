@@ -2,7 +2,7 @@
 
 ## Custom Callouts
 
-[DOWNLOAD](custom%20callouts.md)
+[DOWNLOAD](calloutsOutline.md)
 
 Just a few changes here and there, I've put comments in the stylesheet that describe what each section does. Works in v1.5.3 of Obsidian, v7.4.6 of Minimal.
 
