@@ -1,6 +1,7 @@
 // based off of movie & book scripts by Christian B. B. Houmann
 // scripts + quickadd documentation: https://github.com/chhoumann/quickadd/
 // jikan api documentation: https://docs.api.jikan.moe/
+// Version 2
 
 const notice = msg => new Notice(msg, 5000);
 
@@ -11,27 +12,15 @@ module.exports = {
     entry: start,
     settings: {
         name: "MAL Manga Script Using Jikan API",
-    options: {
-        "searchResultsLimit": {
-            type: "dropdown",
-            defaultValue: "10",
-            options: [
-                "5",
-                "10",
-                "15",
-                "20",
-            ],
-        }
     }
-    }
-}
+ }
+
 
 let QuickAdd;
-let Settings;
 
-async function start(params, settings) {
+
+async function start(params) {
     QuickAdd = params;
-    Settings = settings;
 
     const query = await QuickAdd.quickAddApi.inputPrompt("Enter manga name: ");
     if (!query) {
@@ -54,13 +43,16 @@ async function start(params, settings) {
     QuickAdd.variables = {
         ...selectedManga,
         authorsReversed: fixAuthors(selectedManga.authors),
-        genreList: flatten(selectedManga.genres),
+        genreList: makeList(selectedManga.genres),
         authorsOriginal: getnestedvalue(selectedManga.authors),
-        themesList: flatten(selectedManga.themes),
+        themesList: makeList(selectedManga.themes),
         cover: selectedManga.images.jpg.image_url,
+        summary: reformatSummary(selectedManga.synopsis),
         fileName: replaceIllegalFileNameCharactersInString(selectedManga.title),
-        chapterNumber: isNumber(selectedManga.chapters),
-        volumeNumber: isNumber(selectedManga.volumes),
+        japaneseTitle: selectedManga?.title_japanese ?? "N/A",
+        alternateTitles: makeListString(selectedManga.titles),
+        chapterNumber: selectedManga?.chapters ?? "0",
+        volumeNumber: selectedManga?.volumes ?? "0",
     }
 }
 
@@ -95,18 +87,20 @@ function getnestedvalue(sublist) {
     return sublist.map(item => item.name).join(", ");
 }
 
-function flatten(array) {
-    if (array.length > 0) return array.flatMap((array) => array.name).join(", ");
-    if (!array.length > 0) return "N/A";
+function makeList(array) {
+    if (array.length == 0) return "N/A";
+    if (array.length === 1) return `\n  - "${array[0].name}"`;
+    return array.map((item) => `\n  - "${item.name}"`).join("");
 }
 
-function isNumber(str) {
-    if (str > 0) return str;
-    console.log(str);
-    if (!str > 0) return "0";
-
+function makeListString(array) {
+    if (array.length === 0) return "N/A";
+const altTitles = array.map((item) => `\n - "${item.type}\: ${item.title}" `).join("");
+return altTitles
 }
-
+function reformatSummary(string) {
+    return string.replace(/["'()]/g,"");
+}
 function replaceIllegalFileNameCharactersInString(string) {
     return string.replace(/[\\,#%&\{\}\/*<>$\'\":@]*/g, '');    
 }
