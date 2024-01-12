@@ -21,5 +21,5 @@ status:
 ![cover|150]({{VALUE:cover}})
 
 ## {{VALUE:title}}
-{{VALUE:synopsis}}
+{{VALUE:summary}}
 ### Review
