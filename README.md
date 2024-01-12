@@ -54,19 +54,23 @@ Additional fields would be any variable that is listed on the [sidebar under the
 
 Variables that have been tested:
 
-| Variable | Contains | Type |
+| Variable | Contains | Property Type |
 |---------|---------|---|
-| title | Default display title on MAL | String |
-| title_english | English title | String |
-| authorsReversed | All authors/creators, formatted as Firstname Lastname and separated by commas | String |
-| authorsOriginal | All authors/creators, formatted as Lastname, Firstname and separated by commas | String |
-| genreList | List of genres | String |
-| themeList | List of themes | String |
-| type | Type of publication. Manga, manhwa, doujinshi, light novels, etc. | String |
-| cover | URL for cover image | String |
-| synopsis | Full length description from MAL | String |
-| chapters | Number of chapters (this is not always available) | Integer |
-| volumes | Number of volumes (this is not always available) | Integer |
+| title | Default display title on MAL | Text |
+| title_english | English title | Text |
+| japaneseTitle | Adds non-English title if there is one. | Text |
+| alternateTitles | Returns list of all titles available | List |
+| authorsReversed | All authors/creators, formatted as Firstname Lastname and separated by commas | Text |
+| authorsOriginal | All authors/creators, formatted as Lastname, Firstname and separated by commas | Text |
+| genreList | List of genres | List |
+| themeList | List of themes | List |
+| type | Type of publication. Manga, manhwa, doujinshi, light novels, etc. | Text |
+| cover | URL for cover image | Text |
+| synopsis | Full length description from MAL | Text |
+| chapters | Number of chapters (this is not always available) | Number |
+| volumes | Number of volumes (this is not always available) | Number |
+
+*Property Type refers specifically to Frontmatter properties. Frontmatter is very particular about how lists are formatted and they are not interchangeable with text.*
 
 Variables that probably work in some capacity but I haven't tested yet:
 
@@ -90,8 +94,16 @@ Anything that's an integer in the untested list is a bit iffy - if the value is 
 
 </details>
 
+## Changelog
 
-
+Version 2:
+- Reworked <code>chapterNumber</code> and <code>volumeNumber</code> so that they will either return a number or <code>0</code>. Templater is weird about zeros. The fix has the script returning the zero as a string but Frontmatter will recognize it as a number. Users should no longer be prompted for values.
+- Reworked <code>genreList</code> and <code>themeList</code> so that they are formatted as lists in a way that Frontmatter recognizes. They will also now return a value of <code>N/A</code> if none are listed. Users should no longer be prompted for values.
+- <code>summary</code> is now available as a variable. There were formatting issues with the previous version that Frontmatter didn't like, namely parentheses and quotation marks. This variable removes those characters, as (as far as I know) escape characters don't work in Frontmatter.
+- <code>japaneseTitle</code> is now available as a variable. This isn't always Japanese, as some original titles are in Korean. I haven't had issues with characters displaying correctly so far, but if anyone has issues with it please let me know.
+- <code>alternateTitles</code> is now a variable. This is formatted as a list. Some of the titles it returns may be duplicates of others. Because it's a list, it's easy to remove unwanted titles with the Properties View. Each list item should have an <code>x</code> that you can click to remove it.
+- Updated the example template provided. New fields have been added. The way some fields are formatted has changed. Lists do not work correctly if the variable is inside quotation marks. Text/Strings work better with quotation marks.
+  
 ## Additional Documentation/Resources:
 - [QuickAdd Repository](https://github.com/chhoumann/quickadd)
 - [Jikan API Documentation](https://docs.api.jikan.moe/)
@@ -100,5 +112,4 @@ Anything that's an integer in the untested list is a bit iffy - if the value is 
 ## Planned Improvements
 - formatting the list of genres so that it can be used as tags
 - formatting the list of themes so it can be used as tags
-- variable for non-English titles
 - testing other variables like satus & publishing dates
