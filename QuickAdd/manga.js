@@ -99,7 +99,7 @@ const altTitles = array.map((item) => `\n - "${item.type}\: ${item.title}" `).jo
 return altTitles
 }
 function reformatSummary(string) {
-    return string.replace(/["'()]/g,"");
+    return string.replace(/["()]/g,"");
 }
 function replaceIllegalFileNameCharactersInString(string) {
     return string.replace(/[\\,#%&\{\}\/*<>$\'\":@]*/g, '');    
