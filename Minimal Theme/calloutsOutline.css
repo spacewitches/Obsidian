@@ -3,7 +3,7 @@
 .callouts-outlined .callout {
 	--callout-border-width: 2px;
 	--callout-title-size: 1.25em;
-/*	background-color: rgba(var(--callout-color), .05); */
+	background-color: rgba(var(--callout-color), .05); 
 	border-radius: 10px;
 }
 
